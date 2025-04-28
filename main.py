@@ -1,6 +1,6 @@
 import pygame as pg
 
-from cellular_automation import Automation, Agent
+from cellular_automation import Automation, Agent, View
 from config import Config
 
 pg.init()
@@ -15,12 +15,14 @@ def main() -> None:
         cols=Config.COLUMNS,
         agent_class=Agent
     )
+    view = View(model=model, cell_size=Config.CELL_SIZE)
     while running:
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 running = False
         screen.fill(Config.BACKGROUND_COLOR)
 
+        screen.blit(view.render(), (0, 0))
         pg.display.flip()
         clock.tick(Config.FPS)
 

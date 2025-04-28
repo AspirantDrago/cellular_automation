@@ -18,6 +18,14 @@ class Automation:
             for row in range(self._rows)
         ]
 
+    @property
+    def rows(self) -> int:
+        return self._rows
+
+    @property
+    def cols(self) -> int:
+        return self._cols
+
     def create_agent(self, row: int, col: int, *args, **kwargs) -> Agent | None:
         if 0 <= row < self._rows and 0 <= col < self._cols:
             agent = self._agent_class(self, row, col, *args, **kwargs)
