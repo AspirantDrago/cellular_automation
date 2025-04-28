@@ -13,10 +13,10 @@ class Padding:
 
 class Config:
     # размеры
-    COLUMNS = 100
-    ROWS = 100
+    COLUMNS = 50
+    ROWS = 50
 
-    CELL_SIZE = 5
+    CELL_SIZE = 12
     TITLE = 'Game of Life'
 
     PADDING = Padding(10, 10, 10, 10)
