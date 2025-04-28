@@ -20,3 +20,10 @@ class Agent(metaclass=ABCMeta):
     def status(self) -> int:
         ...
 
+    @property
+    def row(self) -> int:
+        return self._row
+
+    @property
+    def col(self) -> int:
+        return self._col

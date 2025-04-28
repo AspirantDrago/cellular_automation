@@ -51,6 +51,11 @@ class Automation:
     def stop(self) -> None:
         self._status = False
 
+    def update(self, *args, **kwargs) -> None:
+        for row in range(self._rows):
+            for col in range(self._cols):
+                self._grid[row][col].update(*args, **kwargs)
+
 
 class ThoreMixin:
     def create_agent(self, row: int, col: int, *args, **kwargs) -> Agent | None:
@@ -62,3 +67,16 @@ class ThoreMixin:
 
     def get(self, row: int, col: int) -> Agent | None:
         return self._grid[row % self._rows][col % self._cols]
+
+
+class MooreNeighborhoodMixin:
+    MOORE_RADIUS = 1
+
+    def get_neighbors(self, row: int, col: int) -> list[Agent]:
+        result = []
+        for row2 in range(row - self.MOORE_RADIUS, row + self.MOORE_RADIUS + 1):
+            for col2 in range(col - self.MOORE_RADIUS, col + self.MOORE_RADIUS + 1):
+                if row == row2 and col == col2:
+                    continue
+                result.append(self._grid[row2][col2])
+        return result
