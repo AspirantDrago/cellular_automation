@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 from .agent import Agent
 
 
@@ -52,9 +54,11 @@ class Automation:
         self._status = False
 
     def update(self, *args, **kwargs) -> None:
+        copy_grid = deepcopy(self._grid)
         for row in range(self._rows):
             for col in range(self._cols):
-                self._grid[row][col].update(*args, **kwargs)
+                copy_grid[row][col].update(*args, **kwargs)
+        self._grid = copy_grid
 
 
 class ThoreMixin:
@@ -78,5 +82,5 @@ class MooreNeighborhoodMixin:
             for col2 in range(col - self.MOORE_RADIUS, col + self.MOORE_RADIUS + 1):
                 if row == row2 and col == col2:
                     continue
-                result.append(self._grid[row2][col2])
+                result.append(self.get(row2, col2))
         return result

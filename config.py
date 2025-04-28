@@ -27,4 +27,4 @@ class Config:
 
     BACKGROUND_COLOR = pg.color.Color(255, 255, 255)
 
-    FPS = 60
+    FPS = 15
