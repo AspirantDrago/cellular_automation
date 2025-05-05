@@ -39,7 +39,8 @@ class View(metaclass=ABCMeta):
             for col in range(self._model.cols):
                 rect = pg.Rect(row * self._cell_size, col * self._cell_size, self._cell_size, self._cell_size)
                 self.render_agent(self._model(row, col), screen, rect)
-                pg.draw.rect(screen, self._border_color, rect, 1)
+                if self._border_width:
+                    pg.draw.rect(screen, self._border_color, rect, self._border_width)
         return screen
 
     @abstractmethod

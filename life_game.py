@@ -2,9 +2,9 @@ import pygame as pg
 
 from config import Config
 
-from src.life_view import LifeView
-from src.life_model import LifeModel
-from src.life_agent import AgentStatus
+from life.life_view import LifeView
+from life.life_model import LifeModel
+from life.life_agent import AgentStatus
 
 pg.init()
 screen = pg.display.set_mode(Config.SIZE)

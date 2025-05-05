@@ -3,6 +3,7 @@ from .life_agent import LifeAgent, AgentStatus
 
 
 class LifeModel(ThoreMixin, Automation, MooreNeighborhoodMixin):
+
     def __init__(self,
                  rows: int,
                  cols: int,
