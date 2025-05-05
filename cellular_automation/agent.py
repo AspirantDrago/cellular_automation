@@ -7,7 +7,9 @@ class Agent(metaclass=ABCMeta):
                  row: int,
                  col: int,
                  *args, **kwargs):
-        self._automation = automation
+        from .automation import Automation
+
+        self._automation: Automation = automation
         self._row = row
         self._col = col
 

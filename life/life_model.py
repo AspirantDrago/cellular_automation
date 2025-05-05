@@ -1,5 +1,5 @@
 from cellular_automation import Automation, MooreNeighborhoodMixin, ThoreMixin
-from .life_agent import LifeAgent, AgentStatus
+from .life_agent import LifeAgent
 
 
 class LifeModel(ThoreMixin, Automation, MooreNeighborhoodMixin):

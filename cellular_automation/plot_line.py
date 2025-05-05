@@ -10,6 +10,15 @@ class PlotLine:
             PlotLine._count_lines % len(self.COLORS)
         ]
         self._name: str | None = None
+        self._visible: bool = True
+
+    @property
+    def visible(self) -> bool:
+        return self._visible
+
+    @visible.setter
+    def visible(self, value: bool) -> None:
+        self._visible = value
 
     @property
     def status(self):

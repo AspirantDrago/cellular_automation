@@ -45,7 +45,8 @@ class Plot:
 
         count_last = min(self.count_last, len(self._t))
         for line in self._lines.values():
-            ax.plot(self._t[-count_last:], line.get_last(count_last), color=line.color, label=str(line))
+            if line.visible:
+                ax.plot(self._t[-count_last:], line.get_last(count_last), color=line.color, label=str(line))
         ax.set_xlabel(self.x_label)
         ax.set_ylabel(self.y_label)
         if self.title is not None:

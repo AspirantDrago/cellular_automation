@@ -32,9 +32,15 @@ class Automation:
     def cols(self) -> int:
         return self._cols
 
-    def create_agent(self, row: int, col: int, *args, **kwargs) -> Agent | None:
+    def create_agent(self,
+                     row: int,
+                     col: int,
+                     agent_class: type[Agent] | None = None,
+                     *args, **kwargs) -> Agent | None:
         if 0 <= row < self._rows and 0 <= col < self._cols:
-            agent = self._agent_class(self, row, col, *args, **kwargs)
+            if agent_class is None:
+                agent_class = self._agent_class
+            agent = agent_class(self, row, col, *args, **kwargs)
             self._grid[row][col] = agent
             return agent
         return self._fake_agent
