@@ -11,12 +11,14 @@ class AgentStatus(enum.IntEnum):
 
 
 class LifeAgent(Agent):
+    LIVE_PROBABILITY = 0.1
+
     @override
     def __init__(self, automation: Automation,
                  row: int,
                  col: int):
         super().__init__(automation, row, col)
-        self._status = random.choice([AgentStatus.ALIVE, AgentStatus.LIVE])
+        self._status = AgentStatus.LIVE if random.random() < self.LIVE_PROBABILITY else AgentStatus.ALIVE
 
     def get_live_neighbours(self) -> int:
         return sum(
