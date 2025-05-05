@@ -18,6 +18,11 @@ def main() -> None:
         cols=Config.COLUMNS
     )
     view = LifeView(model=model, cell_size=Config.CELL_SIZE)
+
+    import tst
+    plot = pg.image.frombytes(*tst.get_image(), "ARGB")
+
+
     while running:
         for event in pg.event.get():
             if event.type == pg.QUIT:
@@ -25,6 +30,7 @@ def main() -> None:
         screen.fill(Config.BACKGROUND_COLOR)
         model.update()
         screen.blit(view.render(), (Config.PADDING.left, Config.PADDING.top))
+        screen.blit(plot, (600, 0))
         pg.display.flip()
         clock.tick(Config.FPS)
 

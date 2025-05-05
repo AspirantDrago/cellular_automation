@@ -1,6 +1,9 @@
+import itertools
 from copy import deepcopy
+from typing import Iterator
 
 from .agent import Agent
+from .plot import Plot
 
 
 class Automation:
@@ -19,6 +22,7 @@ class Automation:
             [agent_class(self, row, col) for col in range(self._cols)]
             for row in range(self._rows)
         ]
+        self._plot : Plot | None = None
 
     @property
     def rows(self) -> int:
@@ -59,6 +63,22 @@ class Automation:
             for col in range(self._cols):
                 copy_grid[row][col].update(*args, **kwargs)
         self._grid = copy_grid
+        if self._plot is not None:
+            self._plot.update()
+
+    def get_all_agents(self) -> list[Agent | None]:
+        return list(itertools.chain.from_iterable(self._grid))
+
+    def __iter__(self) -> Iterator[Agent]:
+        for row in self._grid:
+            for agent in row:
+                if agent is not None:
+                    yield agent
+
+    def create_plot(self) -> Plot:
+        if self._plot is None:
+            self._plot = Plot(self)
+        return self._plot
 
 
 class ThoreMixin:

@@ -21,7 +21,7 @@ class Config:
 
     PADDING = Padding(10, 10, 10, 10)
 
-    WIDTH = COLUMNS * CELL_SIZE + PADDING.left + PADDING.right
+    WIDTH = COLUMNS * CELL_SIZE + PADDING.left + PADDING.right + 400
     HEIGHT = COLUMNS * CELL_SIZE + PADDING.top + PADDING.bottom
     SIZE = (WIDTH, HEIGHT)
 
