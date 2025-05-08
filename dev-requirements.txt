@@ -1,0 +1,2 @@
+Sphinx~=8.3.0
+snowballstemmer~=2.2.0
