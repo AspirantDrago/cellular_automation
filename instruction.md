@@ -25,13 +25,26 @@
    sphinx-quickstart
 ```
 
+Далее вводим:
+
+`> Separate source and build directories (y/n) [n]: y`
+
+`> Project name: СellularAutomation`
+
+`> Author name(s): AspirantDrago`
+
+`> Project release []: 1.0.0`
+
+`> Project language [en]: ru`
+
 ### 6. Настраиваем `Sphinx`
 
 ### 7. Добавляем в начало файла `conf.py` путь к проекту:
 ```python
 import os
 import sys
-sys.path.insert(0, os.path.abspath(r'C:\Users\User\PycharmProjects\СellularAutomation'))
+
+sys.path.insert(0, os.path.abspath('../..'))
 ```
 
 ### 8. В файле `conf.py` указывеам расширения `Sphinx'a`, заменив
